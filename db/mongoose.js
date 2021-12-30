@@ -1,6 +1,10 @@
 const mongoose = require('mongoose');
 const url = 'mongodb+srv://mariajpages:<njjjkj2012>@cluster0.yrdcz.mongodb.net/newecommerce?retryWrites=true&w=majority'
 
+
+const dbUser = process.env.dbUser
+const dbPass = process.env.dbPass
+
 mongoose.connect(url, {
     useNewUrlParser: true,
 });
