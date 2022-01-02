@@ -2,15 +2,17 @@ const mongoose = require('mongoose');
 
 const { Schema } = mongoose;
 
-mongoose.Schema.Types.Number.cast(false);
-mongoose.Schema.Types.String.cast(false);
+// mongoose.Schema.Types.Number.cast(false);
+// mongoose.Schema.Types.String.cast(false);
 
 const schema = new Schema({
   name: {
     type: String,
     required: true,
     validate(value){
-        
+      if(value.length > 20) {
+        throw new Error('Demasiados caracteres');
+      }
     }
   },
   price: {
@@ -22,13 +24,3 @@ const schema = new Schema({
 const Product = mongoose.model('Product', schema);
 
 module.exports = Product;
-// const Product = mongoose.model('Product', {
-//     name:{
-//         type: String,
-//         required: true
-//     },
-//     price:{
-//         type:Number,
-//         required: true,
-//     },
-// });
